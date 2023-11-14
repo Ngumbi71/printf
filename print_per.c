@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * print_37 - prints the char %.
+ * print_40 - prints the char %.
  * Return: 1.
  */
 int print_40(void)
