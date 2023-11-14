@@ -114,5 +114,9 @@ int _strlen(char *s);
 int _strlenc(const char *s);
 int print_40(void);
 
+int print_integer(va_list list);
+int print_dec(va_list list);
+
+
 
 #endif
