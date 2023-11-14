@@ -1,10 +1,10 @@
 #include "main.h"
 /**
- * print_40 - prints the char %.
+ * print_37 - ASCII number for char %.
  * Return: 1.
  */
-int print_40(void)
+int print_37(void)
 {
-	_putchar(40);
+	_putchar(37);
 	return (1);
 }
