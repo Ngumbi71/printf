@@ -102,4 +102,17 @@ int is_digit(char);
 long int convert_sizenumber(long int num, int size);
 long int convert_size_unsgnd(unsigned long int num, int size);
 
+/*putchar prototype */
+
+int _putchar(char c);
+
+/*prints characters */
+
+int printf_char(va_list list);
+int print_s(va_list list);
+int _strlen(char *s);
+int _strlenc(const char *s);
+int print_40(void);
+
+
 #endif
