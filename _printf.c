@@ -1,65 +1,43 @@
 #include "main.h"
 
-void print_buffer(char buffer[], int *buff_ind);
-
 /**
- * _printf - start of printf function
- * @format: format
- * Return: printed characters
+ * _printf - is a function that selects the correct function to print.
+ * @format: identifier to look for.
+ * Return: the length of the string.
  */
-int _printf(const char *format, ...)
+int _printf(const char * const format, ...)
 {
-	int x, printed = 0, printed_chars = 0;
-	int flags, width, precision, size, buff_ind = 0;
-	va_list list;
-	char buffer[BUFF_SIZE];
+	convert p[] = {
+		{"%s", print_s}, {"%c", printf_char},
+		{"%%", print_40},
+		{"%i", print_integer}, {"%d", print_dec}
+	};
 
-	if (format == NULL)
-		return (-1);
+	va_list list;
+	int i = 0, j, length = 0;
 
 	va_start(list, format);
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+		return (-1);
 
-	for (x = 0; format && format[x] != '\0'; x++)
+Here:
+	while (format[i] != '\0')
 	{
-		if (format[x] != '%')
+		j = 13;
+		while (j >= 0)
 		{
-			buffer[buff_ind++] = format[x];
-			if (buff_ind == BUFF_SIZE)
-				print_buffer(buffer, &buff_ind);
-			printed_chars++;
+			if (p[j].ph[0] == format[i] && p[j].ph[1] == format[i + 1])
+			{
+				length += p[j].function(list);
+				i = i + 2;
+				goto Here;
+			}
+			j--;
 		}
-		else
-		{
-			print_buffer(buffer, &buff_ind);
-			flags = get_flags(format, &x);
-			width = get_width(format, &x, list);
-			precision = get_precision(format, &x, list);
-			size = get_size(format, &x);
-			++x;
-			printed =  handle_print(format, &x, list, buffer, flags,
-					width, precision, size);
-			if (printed == -1)
-				return (-1);
-			printed_chars += printed;
-		}
+		_putchar(format[i]);
+		length++;
+		i++;
 	}
-
-	print_buffer(buffer, &buff_ind);
-
 	va_end(list);
-
-	return (printed_chars);
-}
-
-/**
- * print_buffer - prints contents of buffer
- * @buffer: array of characters
- * @buff_ind: inderx at which to add nexct char
- */
-void print_buffer(char buffer[], int *buff_ind)
-{
-	if (*buff_ind > 0)
-		write(1, &buffer[0], *buff_ind);
-
-	*buff_ind = 0;
+	return (length);
 }
