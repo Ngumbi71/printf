@@ -1,14 +1,14 @@
 #include "main.h"
 /**
  * print_integer - prints integer
- * @args: argument to print
+ * @list: argument to print
  * Return: integer
  */
 int print_integer(va_list list)
 {
 	int n = va_arg(list, int);
 	int num, last = n % 10, digit, exp = 1;
-	int  i = 1;
+	int x = 1;
 
 	n = n / 10;
 	num = n;
@@ -19,7 +19,7 @@ int print_integer(va_list list)
 		num = -num;
 		n = -n;
 		last = -last;
-		i++;
+		x++;
 	}
 	if (num > 0)
 	{
@@ -35,12 +35,12 @@ int print_integer(va_list list)
 			_putchar(digit + '0');
 			num = num - (digit * exp);
 			exp = exp / 10;
-			i++;
+			x++;
 		}
 	}
 	_putchar(last + '0');
 
-	return (i);
+	return (x);
 }
 
 /**
@@ -53,7 +53,7 @@ int print_dec(va_list list)
 {
 	int n = va_arg(list, int);
 	int num, last = n % 10, digit;
-	int  i = 1;
+	int x = 1;
 	int exp = 1;
 
 	n = n / 10;
@@ -65,7 +65,7 @@ int print_dec(va_list list)
 		num = -num;
 		n = -n;
 		last = -last;
-		i++;
+		x++;
 	}
 	if (num > 0)
 	{
@@ -81,10 +81,10 @@ int print_dec(va_list list)
 			_putchar(digit + '0');
 			num = num - (digit * exp);
 			exp = exp / 10;
-			i++;
+			x++;
 		}
 	}
 	_putchar(last + '0');
 
-	return (i);
+	return (x);
 }

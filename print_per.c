@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * print_37 - ASCII number for char %.
- * Return: 1.
+ * Return: 1
  */
 int print_37(void)
 {

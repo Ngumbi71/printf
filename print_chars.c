@@ -3,9 +3,8 @@
 /**
  * print_char - function that prints a character.
  * @list: arguments.
- * return: an integer
+ * Return: an integer
  */
-
 int print_char(va_list list)
 {
 	char t;
