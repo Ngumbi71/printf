@@ -8,7 +8,7 @@
 int _printf(const char * const format, ...)
 {
 	convert p[] = {
-		{"%s", print_s}, {"%c", printf_char},
+		{"%s", print_s}, {"%c", print_char},
 		{"%%", print_37},
 		{"%i", print_integer}, {"%d", print_dec}, {"%r", print_revs},
 		{"%u", print_unsigned},
