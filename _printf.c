@@ -9,8 +9,9 @@ int _printf(const char * const format, ...)
 {
 	convert p[] = {
 		{"%s", print_s}, {"%c", printf_char},
-		{"%%", print_40},
-		{"%i", print_integer}, {"%d", print_dec}
+		{"%%", print_37},
+		{"%i", print_integer}, {"%d", print_dec}, {"%r", print_revs},
+		{"%u", print_unsigned},
 	};
 
 	va_list list;
